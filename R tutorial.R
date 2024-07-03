@@ -46,3 +46,32 @@ m
 x <- 1:3
 y <- 10:12
 cbind(x,y)
+
+
+x <- factor(c("yes", "no", "yes"))
+table(x)
+
+#levels are sorted by alphabetical order
+
+x <- c(1,2,NA,10,3)
+is.na(x)
+
+is.nan(x)
+
+x <- data.frame(foo = 1:4, bar = c(T, T, F, F))
+x
+
+con <- url("http://jhsph.edu", "r")
+x <- readLines(con)
+x
+head(x)
+
+
+x <- c("a", "b", "c", "d", "e")
+x[2]
+x[1:2]
+x[x > "a"]
+
+u <- x > "a"
+u
+
