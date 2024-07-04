@@ -158,3 +158,123 @@ nrow(data)
 tail(data, n = 2)
 
 data[47, ]
+
+#while loops
+
+count <- 0
+while(count <10) {
+  print(count)
+  count <- count + 1 
+}
+
+
+z <- 5
+
+while( z >= 3 && z <=10) {
+  print(z)
+  coin <- rbinom(1,1,0.5)
+  
+  if (coin == 1) {
+    z <- z + 1
+    
+  }else {z <- z - 1}
+}
+
+#repeats, optimization
+
+x0 <- 1
+tol <- 1e-8
+
+repeat {
+  x1 <- computeEstimate()
+  if(abs(x1-x0) < tol) {
+    break
+  } else {
+    x0 <- x1
+  }
+}
+
+#for loop for investing
+
+money <- 25000
+years <- 25
+growth <- 1.03
+
+# Vectors to store years and money values
+year_vector <- 1:years
+money_vector <- numeric(years)
+
+for (year in 1:years) {
+  money <- money * 1.03 + 25000
+  money_vector[year] <- money
+  print(money)
+}
+
+money_2 <- 25000
+money_vector_not_invested <- numeric(years)
+
+for (year in 1:years) {
+  money_2 <- money_2 + 25000
+  money_vector_not_invested[year] <- money_2
+  print(money_2)
+}
+
+y_min <- min(money_vector)
+y_max <- max(money_vector,money_vector_6)
+
+
+money <- 25000
+money_vector_6 <- numeric(years)
+growth <- 1.06
+
+for (year in 1:years) {
+  money <- money * growth + 25000
+  money_vector_6[year] <- money
+  print(money)
+}
+
+
+
+plot(year_vector, money_vector, type="o", col="blue", xlab="Year", ylab="Money", main="Money Growth Over 25 Years (25000 saved or invested)",  ylim=c(y_min, y_max))
+lines(year_vector, money_vector_not_invested, type="o", col="red")
+lines(year_vector, money_vector_6, type="o", col="green3")
+legend("topleft", legend=c("3% return of investment", "Money saved in bank", "6% return of investment"), col=c("blue", "red", "green"), lty=1, pch=1)
+
+
+#functions (can be put into a package or text file)
+
+add2 <- function(x, y){
+  x+y
+}
+
+add2(3,5)
+
+
+above10 <- function(x) {
+  use <- x > 10
+  x[use]
+}
+
+above <- function(x, n){
+  use <- x > n
+  x[use]
+}
+
+
+colummean <- function(y, removeNA = TRUE){
+  nc <- ncol (y)
+  means <- numeric(nc)
+  for (i in 1:nc) {
+    means [i] <- mean(y[, i], na.rm = removeNA)
+  }
+  means
+}
+
+
+mydata <- rnorm(100, 1:100)
+mydata
+sd(mydata)
+
+
+
+
