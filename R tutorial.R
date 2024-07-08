@@ -158,3 +158,31 @@ nrow(data)
 tail(data, n = 2)
 
 data[47, ]
+
+
+#control structures
+#if/else
+x <- 4
+if(x > 3) {
+  y <- 10
+} else { y <- 0}
+y
+
+#for loops
+
+for (i in 1:10) {
+  print(i)
+}
+
+x <- matrix (1:6, 2, 3)
+x
+
+for (row in seq_len(nrow(x))) {
+  for(col in seq_len(ncol(x))) {
+    print(x[row, col])
+  }
+}
+
+
+
+
