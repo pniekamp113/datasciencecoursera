@@ -1,7 +1,9 @@
 #air pollution assigment
 
+library(dplyr)
+
 getwd()
-First <- read.csv("C:/Users/Patrick Niekamp/Desktop/Data Science Series/datasciencecoursera/specdata/001.csv")
+First <- read.csv("C:\\Users\\Patrick Niekamp\\Desktop\\Data Science\\datasciencecoursera\\specdata/001.csv")
 First
 pollutant <- "sulfate"
 mean <- mean(First[[pollutant]], na.rm = TRUE)
@@ -28,7 +30,7 @@ meansulfate <- mean(combined_data[[pollutant]], na.rm = TRUE)
 meansulfate
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
-  directory <- "C:/Users/Patrick Niekamp/Desktop/Data Science Series/datasciencecoursera/specdata"
+  directory <- "C:\\Users\\Patrick Niekamp\\Desktop\\Data Science\\datasciencecoursera\\specdata"
   data_list <- list()
   file_list <- list.files(directory, full.names = TRUE)
   file_sublist <- file_list[id]
@@ -42,4 +44,27 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   print(mean)
 }
 
-pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean("specdata", "nitrate", 23)
+
+
+complete <- function (directory, id = 1:332) {
+  directory <- "C:\\Users\\Patrick Niekamp\\Desktop\\Data Science\\datasciencecoursera\\specdata"
+  file_list <- list.files(directory, full.names = TRUE)
+  file_sublist <- file_list[id]
+  for (file in file_sublist) {
+    data <- read.csv(file)
+    data_list[[file]] <- data
+  }
+  combined_data <- do.call(rbind, data_list)
+  combined_data
+  
+  
+}
+
+
+
+count <- 
+  First %>%
+  group_by(ID) %>%
+  summarise(count = !is.na(First$sulfate) & !is.na(First$nitrate))
+count
