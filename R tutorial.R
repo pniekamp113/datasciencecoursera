@@ -185,4 +185,52 @@ for (row in seq_len(nrow(x))) {
 
 
 
+#Loop functions
+#lapply, sapply...
+#lapply: loop over a list and evaluate a function on each element
+#sapply will try to simplify the result of lapply if possible
 
+x <- 1:4
+lapply(x, runif)
+
+# apply function
+
+x <- matrix(rnorm(200), 20, 10)
+x
+apply(x, 2, mean) #keep first dimension (columns) and eradicate (rows)
+
+#rowSums = apply(x,1,mean)
+
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+
+
+#mapply, multivariant apply which applies a function in parallel over a set of arguments
+
+mapply(rep, 1:4, 4:1)
+
+
+#tapply, apply a function over subsets of a vector
+
+x <- c(rnorm(10), runif(10), rnorm(10,1))
+x
+f <- gl(3,10)
+f
+
+tapply(x, f, mean)
+
+tapply(x, f, range)
+
+#split function. Takes a vector or an obejct and a factor variable and splits the vector
+
+split(x,f)
+lapply(split(x,f),mean)
+
+data
+head(data)
+
+s <- split(data,data$Month)
+s
+
+lapply(s, function(z) colMeans(z[,  c("Ozone", "Solar.R", "Wind")]))
+
+sapply(s, function(x) colMeans(x[,  c("Ozone", "Solar.R", "Wind")], na.rm = TRUE))
