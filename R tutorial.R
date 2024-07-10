@@ -234,3 +234,120 @@ s
 lapply(s, function(z) colMeans(z[,  c("Ozone", "Solar.R", "Wind")]))
 
 sapply(s, function(x) colMeans(x[,  c("Ozone", "Solar.R", "Wind")], na.rm = TRUE))
+
+
+log(-1)
+
+#debugging
+
+#traceback, debug, browser, trace, recover
+
+mean(x)
+
+traceback()
+
+lm(y ~ x)
+traceback()
+
+debug(lm)
+
+
+library(datasets)
+data(iris)
+data
+iris
+?iris
+
+mean(iris[["Sepal.Length"]])
+
+
+virginica <- tapply(iris$Sepal.Length, iris$Species, mean)
+virginica[["virginica"]]
+
+
+iris
+
+colMeans(iris)
+
+apply(iris[, 1:4], 2, mean)
+
+library(datasets)
+data(mtcars)
+?mtcars
+
+mtcars
+
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+with(mtcars, tapply(mpg, cyl, mean))
+
+tapply(mtcars$cyl, mtcars$mpg, mean)
+
+mean(mtcars$mpg, mtcars$cyl)
+
+
+mtcars
+
+sapply(split(mtcars$hp), mean)
+
+
+cyl4 <- subset(mtcars, cyl ==4)
+cyl4
+mean(cyl4$hp)
+cyl8 <- subset(mtcars, cyl ==8)
+cyl8
+
+mean_hp_cyl4 <- mean(subset(mtcars, cyl == 4), mtcars$hp)
+
+average_4 <- tapply(mtcars$hp, mtcars$cyl, mean)
+average_8 <- tapply(mtcars$hp, mtcars$cyl, mean)
+average_8[["8"]]
+difference = average_8[["8"]] - average_4[['4']]
+difference
+
+tapply(mtcars$hp, mtcars$cyl, mean)
+
+debug(ls)
+ls()
+
+
+#str function -> displays the structure of an R object
+
+str(lm)
+
+x <- rnorm(10, 2, 4)
+x
+
+summary(x)
+
+str(x)
+
+library(datasets)
+head(airquality)
+str(airquality)
+
+s <- split(airquality, airquality$Month)
+s
+str(s)
+
+
+#simulations
+
+#rnorm, dnorm, pnorm, rpois
+
+random <- rnorm(200, 19, 1)
+random
+mean(random)
+
+set.seed(1)
+rnorm(5)
+#always set a seed when running a simulation
+
+#simulating a linear model
+
+set.seed(20)
+x <- rnorm(100)
+x
+e <- rnorm(100, 0, 2)
+e
+
